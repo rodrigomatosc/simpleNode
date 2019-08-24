@@ -1,45 +1,37 @@
-# Desafio 01. Conceitos do NodeJS
+# Node
 
-Crie uma aplicação do zero utilizando Express.
+Applications with node and express.
 
-Essa aplicação será utilizada para armazenar projetos e suas tarefas.
+This application is for save projects and tasks in a array.
 
-## Rotas
+## Routes
 
-- `POST /projects`: A rota deve receber `id` e `title` dentro corpo de cadastrar um novo projeto dentro de um array no seguinte formato: `{ id: "1", title: 'Novo projeto', tasks: [] }`; Certifique-se de enviar tanto o ID quanto o título do projeto no formato string com àspas duplas.
+- `POST /projects`: The route receive `id` and `title` and a body with this format: `{ id: "1", title: 'Novo projeto', tasks: [] }`;
 
-- `GET /projects`: Rota que lista todos projetos e suas tarefas;
+- `GET /projects`: show all the projects;
 
-- `PUT /projects/:id`: A rota deve alterar apenas o título do projeto com o `id` presente nos parâmetros da rota;
+- `PUT /projects/:id`: change only the title from project with `id` that there is in the params;
 
-- `DELETE /projects/:id`: A rota deve deletar o projeto com o `id` presente nos parâmetros da rota;
+- `DELETE /projects/:id`: delete a project with `id` that there is in the params;
 
-- `POST /projects/:id/tasks`: A rota deve receber um campo `title` e armazenar uma nova tarefa no array de tarefas de um projeto específico escolhido através do `id` presente nos parâmetros da rota;
+- `POST /projects/:id/tasks`: receive a `title` and save one new task in the array from tasks. The project is with `id` in the params;
 
-### Exemplo
+### Example
 
-Se eu chamar a rota `POST /projects` repassando `{ id: 1, title: 'Novo projeto' }` e a rota `POST /projects/1/tasks` com `{ title: 'Nova tarefa' }`, meu array de projetos deve ficar assim:
+If i call the route `POST /projects` passing `{ id: 1, title: 'New project' }` and the route `POST /projects/1/tasks` with `{ title: 'New Task' }`, my array stay:
 
 ```js
 [
   {
     id: "1",
-    title: 'Novo projeto',
-    tasks: ['Nova tarefa']
+    title: 'New Project',
+    tasks: ['New Task']
   }
 ]
 ```
 
 ## Middlewares
 
-- Crie um middleware que será utilizado em todas rotas que recebem o ID do projeto nos parâmetros da URL que verifica se o projeto com aquele ID existe. Se não existir retorne um erro, caso contrário permita a requisição continuar normalmente;
+- Local middleware for find the project passed in the params. If not exists the api return error, if not return the respost ;
 
-- Crie um middleware global chamado em todas requisições que imprime (`console.log`) uma contagem de quantas requisições foram feitas na aplicação até então;
-
-## Entrega
-
-Esse desafio **não precisa ser entregue** e não receberá correção, mas você pode ver o resultado do código do desafio aqui: https://github.com/Rocketseat/bootcamp-gostack-desafio-01
-
-Após concluir o desafio, adicionar esse código ao seu Github é uma boa forma de demonstrar seus conhecimentos para oportunidades futuras.
-
-“Sua única limitação é você mesmo”!
+- Global middleware called in all the requests (`console.log`) count de number of requests;
